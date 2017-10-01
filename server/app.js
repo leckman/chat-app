@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 const express = require('express');
 const mysql = require('mysql');
 
@@ -9,7 +10,51 @@ const db = mysql.createPool({
     database: 'challenge',
 });
 
-app.get('/test', function (req, res) {
+app.get('/', function (req, res) {
+  res.status(204);
+});
+
+// login page
+app.get('/login', function (req, res) {
+  res.status(204);
+});
+
+// signup page
+app.get('/signup', function (req, res) {
+  res.status(204);
+});
+
+// account creation
+app.post('/users', function(req, res) {
+  res.status(204);
+});
+
+// login
+app.post('/session', function (req, res) {
+  res.status(204);
+});
+
+// logout
+app.delete('/session', function(req, res) {
+  res.status(204);
+});
+
+// enter chat room
+app.get('/chats', function(req, res) {
+  res.status(204);
+});
+
+// create chat room
+app.post('/chats', function(req, res) {
+  res.status(204);
+});
+
+// add message to chat
+app.post('/chats/:chatId', function (req, res) {
+  res.status(204);
+});
+
+app.get('/ping', function (req, res) {
     db.getConnection(function (err, connection) {
         if (err) {
             res.status(501).send(err.message);
@@ -23,8 +68,8 @@ app.get('/test', function (req, res) {
             }
 
             res.json({
-                result: results[0].col,
-                backend: 'nodejs',
+                service: 'responsive',
+                database: 'connected',
             });
             connection.release();
         });

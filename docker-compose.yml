@@ -11,18 +11,18 @@ services:
             - ./db/sql:/docker-entrypoint-initdb.d
 
     backend:
-        build: backend-golang
+        build: server
         links:
             - db
         ports:
             - "18000:8000"
 
-    fullstack:
-        build: frontend-react
+    chat:
+        build: client
         links:
             - backend
         ports:
             - "13000:3000"
 
-volumes:  
+volumes:
     devmysqldb:
